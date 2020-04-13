@@ -61,7 +61,7 @@ public class NewEntry {
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblFirstName = new JLabel("FIrst Name:");
+		JLabel lblFirstName = new JLabel("First Name:");
 		lblFirstName.setBounds(31, 23, 106, 15);
 		frame.getContentPane().add(lblFirstName);
 		
@@ -88,7 +88,7 @@ public class NewEntry {
 		frame.getContentPane().add(textField_2);
 		textField_2.setColumns(10);
 		
-		JLabel lblZip = new JLabel("ZIp:");
+		JLabel lblZip = new JLabel("Zip:");
 		lblZip.setBounds(33, 123, 70, 15);
 		frame.getContentPane().add(lblZip);
 		
@@ -139,7 +139,7 @@ public class NewEntry {
 				if(em.equals("")) {
 					em="--";
 				}
-				String s = f+" "+l+" "+a+" "+z+" "+p+" "+em;
+				String s = f+"|"+l+"|"+a+"|"+z+"|"+p+"|"+em;
 				book.addEntries(s);
 				NewFile r = new NewFile(book,frameName);
 				r.newFile(book,frameName);

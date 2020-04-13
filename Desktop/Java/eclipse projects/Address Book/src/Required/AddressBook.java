@@ -20,7 +20,7 @@ public class AddressBook {
 		top=0;
 		String s;
 		while((s=br.readLine())!=null) {
-			StringTokenizer st = new StringTokenizer(s);
+			StringTokenizer st = new StringTokenizer(s,"|");
 			if(top==0) {
 				entries=new Entries[1];
 				entries[0]=new Entries(st.nextToken(),st.nextToken(),st.nextToken(),st.nextToken(),st.nextToken(),st.nextToken());
@@ -67,7 +67,7 @@ public class AddressBook {
 	}
 	
 	public void addEntries(String s) {
-		StringTokenizer st = new StringTokenizer(s);
+		StringTokenizer st = new StringTokenizer(s,"|");
 		if(top==0) {
 			entries=new Entries[1];
 			entries[0]=new Entries(st.nextToken(),st.nextToken(),st.nextToken(),st.nextToken(),st.nextToken(),st.nextToken());
@@ -94,7 +94,7 @@ public class AddressBook {
 	public void writeFile(String z,BufferedWriter bw)throws IOException{
 		String s = "";
 		for(int i=0;i<top;i++) {
-			s=entries[i].getFirstName()+" "+entries[i].getLastName()+" "+entries[i].getAddress()+" "+entries[i].getZip()+" "+entries[i].getPhone()+" "+entries[i].getEmail();
+			s=entries[i].getFirstName()+"|"+entries[i].getLastName()+"|"+entries[i].getAddress()+"|"+entries[i].getZip()+"|"+entries[i].getPhone()+"|"+entries[i].getEmail();
 			s+="\n";
 			bw.write(s);
 		}

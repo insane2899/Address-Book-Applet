@@ -229,13 +229,13 @@ public class NewFile {
 		JMenu mnHelp = new JMenu("Help");
 		menuBar.add(mnHelp);
 		frame.getContentPane().setLayout(null);
-		mnHelp.addActionListener(new ActionListener() {
+		
+		JMenuItem Help = new JMenuItem("Help");
+		mnHelp.add(Help);
+		Help.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JDialog dialog = new JDialog(frame,"Help");
-				JLabel label = new JLabel("To Add New Data Go to Edit->Add New Data\nTo Delete Data Go to Edit->Delete\nTo Save Go to File->Save");
-				dialog.add(label);
-				dialog.setSize(500,200);
-				dialog.setVisible(true);
+				String s = "To Add New Entry Edit->Add New Entry\nTo Delete Entry Edit->Delete Entry\nTo Save File->Save";
+				JOptionPane.showMessageDialog(frame,s,"Help",JOptionPane.PLAIN_MESSAGE);
 			}
 		});
 		

@@ -4,11 +4,16 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import Required.AddressBook;
+
 import javax.swing.JButton;
 import javax.swing.JDialog;
 
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.File;
 import java.awt.event.ActionEvent;
 
@@ -77,11 +82,21 @@ public class createNew {
 							created(str);
 						}
 						else {
-							JDialog dialog = new JDialog(frmUntitled,"Error!");
-							JLabel label = new JLabel("File Already Exists");
-							dialog.add(label);
-							dialog.setSize(500,200);
-							dialog.setVisible(true);
+							Object[] message = {"An Address Book with same name already exists. Do you want to edit that file?"};
+							int choice = JOptionPane.showConfirmDialog(frmUntitled, message, "Warning", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null);
+							if(choice==JOptionPane.YES_OPTION) {
+								try {
+									File q = new File("AddressBooks/"+str);
+									BufferedReader br = null;
+									AddressBook book = new AddressBook(q,br);
+									NewFile nf = new NewFile(book,str);
+									nf.newFile(book,str);
+									frmUntitled.dispose();
+								}catch(Exception z) {
+									System.out.println(z);
+								}
+
+							}
 						}
 					}catch(Exception z) {
 						System.out.println(z);
